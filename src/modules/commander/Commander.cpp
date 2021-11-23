@@ -1740,6 +1740,7 @@ Commander::run()
 
 	const param_t param_airmode = param_find("MC_AIRMODE");
 	const param_t param_man_arm_gesture = param_find("MAN_ARM_GESTURE");
+	const param_t param_rc_map_arm_sw = param_find("RC_MAP_ARM_SW");
 
 	/* initialize */
 	led_init();
@@ -1873,6 +1874,23 @@ Commander::run()
 					 */
 					events::send(events::ID("commander_airmode_requires_no_arm_gesture"), {events::Log::Error, events::LogInternal::Disabled},
 						     "Yaw Airmode requires disabling the stick arm gesture");
+				}
+			}
+
+			if (param_man_arm_gesture != PARAM_INVALID && param_rc_map_arm_sw != PARAM_INVALID) {
+				int32_t man_arm_gesture = 0, rc_map_arm_sw = 0;
+				param_get(param_man_arm_gesture, &man_arm_gesture);
+				param_get(param_rc_map_arm_sw, &rc_map_arm_sw);
+
+				if (rc_map_arm_sw > 0 && man_arm_gesture == 1) {
+					man_arm_gesture = 0; // disable arm gesture
+					param_set(param_man_arm_gesture, &man_arm_gesture);
+					mavlink_log_critical(&_mavlink_log_pub, "Arm stick gesture disabled if arm switch in use\t")
+					/* EVENT
+					* @description <param>MAN_ARM_GESTURE</param> is now set to disable arm/disarm stick gesture.
+					*/
+					events::send(events::ID("rc_update_arm_stick_gesture_disabled_with_switch"), {events::Log::Error, events::LogInternal::Disabled},
+						     "Arm stick gesture disabled if arm switch in use");
 				}
 			}
 
