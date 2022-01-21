@@ -177,7 +177,7 @@ gnome-terminal -- /bin/sh -c 'source /home/samurai/shell_script/launch-common.sh
 
 ```
 Some useful links
-[1](https://programs.team/px4-uav-gazebo-simulation-to-track-moving-objects.html)
-[2](https://darienmt.com/autonomous-flight/2018/11/25/px4-sitl-ros-example.html)
+[[1]](https://programs.team/px4-uav-gazebo-simulation-to-track-moving-objects.html)
+[[2]](https://darienmt.com/autonomous-flight/2018/11/25/px4-sitl-ros-example.html)
 
 
