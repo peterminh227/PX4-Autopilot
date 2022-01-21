@@ -126,11 +126,11 @@ sudo apt-get install -y gcc-arm-none-eabi
 ``
 ## Running offboard mode example (22 Jan 2022)
 
-``
+```
 cd PX4-Autopilot <br />
 sudo git checkout v1.10.2
 
-``
+```
 
 
 
