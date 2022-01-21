@@ -128,12 +128,29 @@ sudo apt-get install -y gcc-arm-none-eabi
 
 ```
 cd PX4-Autopilot
-sudo git checkout v1.10.2
+sudo git checkout v1.10.2 
 git submodule update --init --recursive
 ```
 ```
 cd ..
 chmod -R 777 PX4-Autopilot/
 ```
-
+Install tools & dependencies
+```
+bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+sudo apt install -y ninja-build exiftool python-argparse python-empy python-toml python-numpy python-yaml python-dev python-pip ninja-build protobuf-compiler libeigen3-dev genromfs xmlstarlet libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+sudo pip3 install --user pandas jinja2 pyserial cerberus pyulog numpy toml pyquaternion  
+```
+Edit an error in v1.10.2 in
+```
+gedit ./PX4-Autopilot/Tools/sitl_gazebo/include/gazebo_opticalflow_plugin.h
+```
+please change as following
+```
+#define HAS_GYRO true (make TRUE lowercase).
+```
+```
+cd PX4-Autopilot
+make px4_sitl_default gazebo
+```
 
