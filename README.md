@@ -129,5 +129,4 @@ sudo apt-get install -y gcc-arm-none-eabi
 ``
 cd PX4-Autopilot
 git checkout v1.10.2
-
 ``
