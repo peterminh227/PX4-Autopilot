@@ -124,7 +124,7 @@ A high level project roadmap is available [here](https://github.com/orgs/PX4/pro
 ``
 sudo apt-get install -y gcc-arm-none-eabi
 ``
-## Running offboard mode example (22 Jan 2022)
+## Running offboard example from px4 website
 
 ```
 cd PX4-Autopilot
