@@ -153,4 +153,27 @@ please change as following
 cd PX4-Autopilot
 make px4_sitl_default gazebo
 ```
+A usefull script to add paths mavros & SITL: launch_common.sh
+```
+#!/bin/bash
+
+px4_dir=$(pwd)/../PX4-Autopilot
+
+source $px4_dir/Tools/setup_gazebo.bash $px4_dir $px4_dir/build/px4_sitl_default
+
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$px4_dir
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$px4_dir/Tools/sitl_gazebo
+
+```
+and running mavros & SITL
+```
+#!/bin/bash
+
+source ./launch-common.sh
+# mavros
+gnome-terminal -- /bin/sh -c 'roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557";exec bash'
+# px4-sitl
+gnome-terminal -- /bin/sh -c 'source /home/samurai/shell_script/launch-common.sh;roslaunch px4 posix_sitl.launch;exec bash'
+
+```
 
