@@ -176,4 +176,8 @@ gnome-terminal -- /bin/sh -c 'roslaunch mavros px4.launch fcu_url:="udp://:14540
 gnome-terminal -- /bin/sh -c 'source /home/samurai/shell_script/launch-common.sh;roslaunch px4 posix_sitl.launch;exec bash'
 
 ```
+Some useful links
+[https://programs.team/px4-uav-gazebo-simulation-to-track-moving-objects.html](https://programs.team/px4-uav-gazebo-simulation-to-track-moving-objects.html)
+[https://darienmt.com/autonomous-flight/2018/11/25/px4-sitl-ros-example.html](https://darienmt.com/autonomous-flight/2018/11/25/px4-sitl-ros-example.html)
+
 
